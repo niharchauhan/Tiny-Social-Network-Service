@@ -1,0 +1,38 @@
+syntax = "proto3";
+package csce438;
+
+service SynchService{
+  rpc GetAllUsers(GetAllUsersRequest) returns (AllUsers) {}
+
+  rpc GetFL(GetFLRequest) returns (GetFLResponse){}
+
+  rpc GetTL(GetTLRequest) returns (GetTLResponse){} 
+
+  rpc ResynchServer(ResynchServerRequest) returns (ResynchServerResponse){}
+}
+
+message GetAllUsersRequest{}
+message AllUsers {
+    repeated string allUsers = 1;
+}
+
+message GetFLRequest{}
+message GetFLResponse{
+  repeated string lines = 1;
+}
+
+message GetTLRequest{
+  int32 uid = 1;
+}
+message GetTLResponse{
+  repeated string lines = 1;
+}
+
+message ResynchServerRequest{
+  int32 serverID =1;
+}
+message ResynchServerResponse{
+  string Status = 1;
+}
+
+
